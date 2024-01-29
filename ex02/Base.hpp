@@ -1,25 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   Base.hpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: phudyka <phudyka@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/24 14:57:50 by phudyka           #+#    #+#             */
-/*   Updated: 2024/01/25 16:01:50 by phudyka          ###   ########.fr       */
+/*   Created: 2024/01/26 15:31:01 by phudyka           #+#    #+#             */
+/*   Updated: 2024/01/26 15:35:01 by phudyka          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <iostream>
-#include "ScalarConverter.hpp"
+#ifndef BASE_HPP
+#define BASE_HPP
 
-int main(int argc, char **argv)
+#include <iostream>
+#include <cstdlib>
+#include <ctime>
+
+class Base
 {
-    if (argc != 2)
-	{
-        std::cerr << "Error ! [Bad Arguments] :" << argv[0] << " <literal>" << std::endl;
-        return (1);
-    }
-    ScalarConverter::convert(argv[1]);
-	return (0);
-}
+	public:
+    	virtual ~Base() {}
+};
+
+class A : public Base {};
+class B : public Base {};
+class C : public Base {};
+
+Base	*generate(void);
+void	identify(Base *p);
+void	identify(Base &p);
+
+#endif

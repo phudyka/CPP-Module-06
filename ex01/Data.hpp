@@ -1,25 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   Data.hpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: phudyka <phudyka@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/24 14:57:50 by phudyka           #+#    #+#             */
-/*   Updated: 2024/01/25 16:01:50 by phudyka          ###   ########.fr       */
+/*   Created: 2024/01/26 15:13:10 by phudyka           #+#    #+#             */
+/*   Updated: 2024/01/26 15:24:11 by phudyka          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <iostream>
-#include "ScalarConverter.hpp"
+#ifndef DATA_HPP
+#define DATA_HPP
 
-int main(int argc, char **argv)
+#include <iostream>
+
+class Data
 {
-    if (argc != 2)
-	{
-        std::cerr << "Error ! [Bad Arguments] :" << argv[0] << " <literal>" << std::endl;
-        return (1);
-    }
-    ScalarConverter::convert(argv[1]);
-	return (0);
-}
+private:
+    int value;
+
+public:
+    Data();
+    Data(int val);
+    Data(const Data& src);
+    Data& operator=(const Data& src);
+    ~Data();
+
+    int getData() const;
+};
+
+#endif // DATA_HPP
+

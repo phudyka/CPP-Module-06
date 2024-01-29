@@ -1,25 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   Serialization.hpp                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: phudyka <phudyka@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/24 14:57:50 by phudyka           #+#    #+#             */
-/*   Updated: 2024/01/25 16:01:50 by phudyka          ###   ########.fr       */
+/*   Created: 2024/01/26 15:10:42 by phudyka           #+#    #+#             */
+/*   Updated: 2024/01/26 15:22:03 by phudyka          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <iostream>
-#include "ScalarConverter.hpp"
+#ifndef SERIALIZATION_HPP
+#define SERIALIZATION_HPP
 
-int main(int argc, char **argv)
+#include "Data.hpp"
+#include <stdint.h>
+
+class Serialization
 {
-    if (argc != 2)
-	{
-        std::cerr << "Error ! [Bad Arguments] :" << argv[0] << " <literal>" << std::endl;
-        return (1);
-    }
-    ScalarConverter::convert(argv[1]);
-	return (0);
-}
+public:
+    Serialization();
+    Serialization(const Serialization& src);
+    Serialization& operator=(const Serialization& src);
+    ~Serialization();
+
+    static uintptr_t serialize(Data *ptr);
+    static Data* deserialize(uintptr_t raw);
+};
+
+#endif 

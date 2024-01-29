@@ -1,25 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   Data.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: phudyka <phudyka@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/24 14:57:50 by phudyka           #+#    #+#             */
-/*   Updated: 2024/01/25 16:01:50 by phudyka          ###   ########.fr       */
+/*   Created: 2024/01/26 15:12:49 by phudyka           #+#    #+#             */
+/*   Updated: 2024/01/26 15:28:11 by phudyka          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <iostream>
-#include "ScalarConverter.hpp"
+#include "Data.hpp"
 
-int main(int argc, char **argv)
+Data::Data() : value(0) {}
+
+Data::Data(int val) : value(val) {} 
+
+Data::Data(const Data& src) : value(src.value) {}
+
+Data& Data::operator=(const Data& src)
 {
-    if (argc != 2)
-	{
-        std::cerr << "Error ! [Bad Arguments] :" << argv[0] << " <literal>" << std::endl;
-        return (1);
-    }
-    ScalarConverter::convert(argv[1]);
-	return (0);
+    if (this != &src)
+        this->value = src.value;
+    return (*this);
+}
+
+Data::~Data() {}
+
+int Data::getData() const
+{
+    return (value);
 }
